@@ -18,8 +18,12 @@ while True:
         first_frame = frame
         continue
 
+    delta_frame = cv2.absdiff(first_frame, gray)
 
-    cv2.imshow('frame',gray)
+    cv2.imshow('gray',gray)
+    cv2.imshow('delata',delta_frame)
+
+    
 
     key=cv2.waitKey(1000)
     
