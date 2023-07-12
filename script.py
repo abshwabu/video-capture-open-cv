@@ -11,11 +11,13 @@ while True:
 
     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 
+    gray = cv2.GaussianBlur(gray,(21,21),0)
+
 
     if first_frame is  None:
         first_frame = frame
         continue
-    
+
 
     cv2.imshow('frame',gray)
 
