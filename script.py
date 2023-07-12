@@ -1,6 +1,6 @@
 import cv2, time
 
-
+first_frame = None
 
 video = cv2.VideoCapture(0)
 while True:
@@ -11,6 +11,11 @@ while True:
 
     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 
+
+    if first_frame is  None:
+        first_frame = frame
+        continue
+    
 
     cv2.imshow('frame',gray)
 
