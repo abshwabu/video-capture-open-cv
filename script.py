@@ -21,9 +21,19 @@ while True:
     delta_frame = cv2.absdiff(first_frame, gray)
     treshold_delta = cv2.threshold(delta_frame,30,255,cv2.THRESH_BINARY)[1]
 
+    treshold_delta= cv2.dilate(treshold_delta,None,iterations=2)
+
+    (cnts,_)=cv2.findContours(treshold_delta.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+
+    for counter in cnts:
+        if cv2.contourArea(counter) < 1000:
+            continue
+        (x,y,w,h) = cv2.boundingRect(counter)
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),3)
     cv2.imshow('gray',gray)
     cv2.imshow('delata',delta_frame)
     cv2.imshow('treshold',treshold_delta)
+    cv2.imshow('frame',frame)
 
     
 
