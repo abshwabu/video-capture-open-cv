@@ -19,9 +19,11 @@ while True:
         continue
 
     delta_frame = cv2.absdiff(first_frame, gray)
+    treshold_delta = cv2.threshold(delta_frame,30,255,cv2.THRESH_BINARY)[1]
 
     cv2.imshow('gray',gray)
     cv2.imshow('delata',delta_frame)
+    cv2.imshow('treshold',treshold_delta)
 
     
 
