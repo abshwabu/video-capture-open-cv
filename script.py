@@ -15,7 +15,7 @@ while True:
 
 
     if first_frame is  None:
-        first_frame = frame
+        first_frame = gray
         continue
 
     delta_frame = cv2.absdiff(first_frame, gray)
